@@ -45,7 +45,7 @@ namespace ASE77146773
 
 
 
-
+      
         private void initvalues() // reset start values
         {
             xstart = SX;
@@ -56,6 +56,7 @@ namespace ASE77146773
                 xstart = xende - (yende - ystart) * (double)xy;
 
         }
+       
 
        
         private void Form1_Load_1(object sender, EventArgs e)
@@ -64,9 +65,85 @@ namespace ASE77146773
             start();
         }
 
+       
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            //e.consume();
+            mousePressed = true;
+            if (action)
+            {
+                xs = e.X;
+                ys = e.Y;
+                rectangle = false;
+            }
+        }
 
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mousePressed = false;
+            int z, w;
+            if (action)
+            {
+                xe = e.X;
+                ye = e.Y;
 
+                if (xs > xe)
+                {
+                    z = xs;
+                    xs = xe;
+                    xe = z;
+                }
+                if (ys > ye)
+                {
+                    z = ys;
+                    ys = ye;
+                    ye = z;
+                }
+                w = (xe - xs);
+                z = (ye - ys);
+                if ((w < 2) && (z < 2)) {
+                    initvalues(); 
+                }
+                else
+                {
+                    if (((float)w > (float)z * xy)) ye = (int)((float)ys + (float)w / xy);
+                    else xe = (int)((float)xs + (float)z * xy);
+                    xende = xstart + xzoom * (double)xe;
+                    yende = ystart + yzoom * (double)ye;
+                    xstart += xzoom * (double)xs;
+                    ystart += yzoom * (double)ys;
+                }
+                xzoom = (xende - xstart) / (double)x1;
+                yzoom = (yende - ystart) / (double)y1;
+                mandelbrot();
+                this.Invalidate();
+            }
+        }
 
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (action)
+            {
+                xe = e.X;
+                ye = e.Y;
+            }
+            if (mousePressed == true)
+            {
+                this.Invalidate();
+            }
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            //put the bitmap on the window
+            windowG = e.Graphics;
+            windowG.DrawImage(picture, 0, 0, x1, y1);
+            Pen p1 = new Pen(Color.White, 3);
+            if (mousePressed == true)
+            {
+                windowG.DrawRectangle(p1, xs, ys, (xe - xs), (ye - ys));
+            }
+        }
         public struct HSBColor
         {
             float h;
@@ -151,10 +228,11 @@ namespace ASE77146773
                 {
                     return Color.FromArgb
                     (
+
                         (int)60,
                         (int)Math.Round(Math.Min(Math.Max(g, 0), 255)),
                         (int)Math.Round(Math.Min(Math.Max(b, 0), 255))
-                     );
+                        );
                 }
 
                 return Color.FromArgb
@@ -163,7 +241,7 @@ namespace ASE77146773
                         (int)Math.Round(Math.Min(Math.Max(r, 0), 255)),
                         (int)Math.Round(Math.Min(Math.Max(g, 0), 255)),
                         (int)Math.Round(Math.Min(Math.Max(b, 0), 255))
-                     );
+                        );
             }
 
         }
