@@ -1,0 +1,9 @@
+c:\users\lenovo\documents\visual studio 2015\Projects\ASE77146773\ASE77146773\bin\Debug\ASE77146773.exe.config
+c:\users\lenovo\documents\visual studio 2015\Projects\ASE77146773\ASE77146773\bin\Debug\ASE77146773.exe
+c:\users\lenovo\documents\visual studio 2015\Projects\ASE77146773\ASE77146773\bin\Debug\ASE77146773.pdb
+c:\users\lenovo\documents\visual studio 2015\Projects\ASE77146773\ASE77146773\obj\Debug\ASE77146773.Form1.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\ASE77146773\ASE77146773\obj\Debug\ASE77146773.Properties.Resources.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\ASE77146773\ASE77146773\obj\Debug\ASE77146773.csproj.GenerateResource.Cache
+c:\users\lenovo\documents\visual studio 2015\Projects\ASE77146773\ASE77146773\obj\Debug\ASE77146773.exe
+c:\users\lenovo\documents\visual studio 2015\Projects\ASE77146773\ASE77146773\obj\Debug\ASE77146773.pdb
+c:\users\lenovo\documents\visual studio 2015\Projects\ASE77146773\ASE77146773\obj\Debug\ASE77146773.csprojResolveAssemblyReference.cache
