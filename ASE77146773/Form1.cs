@@ -47,6 +47,7 @@ namespace ASE77146773
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Images|*.png;*.bmp;*.jpg";
             ImageFormat format = ImageFormat.Png;
@@ -66,6 +67,7 @@ namespace ASE77146773
                 MessageBox.Show("Image has been Saved!");
 
             }
+
         }
         private void initvalues() // reset start values
         {
