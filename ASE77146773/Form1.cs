@@ -107,6 +107,8 @@ namespace ASE77146773
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+
+
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
