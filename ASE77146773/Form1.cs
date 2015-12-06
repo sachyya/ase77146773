@@ -45,7 +45,28 @@ namespace ASE77146773
 
 
 
-      
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Images|*.png;*.bmp;*.jpg";
+            ImageFormat format = ImageFormat.Png;
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string ext = System.IO.Path.GetExtension(sfd.FileName);
+                switch (ext)
+                {
+                    case ".jpg":
+                        format = ImageFormat.Jpeg;
+                        break;
+                    case ".bmp":
+                        format = ImageFormat.Bmp;
+                        break;
+                }
+                picture.Save(sfd.FileName, format);
+                MessageBox.Show("Image has been Saved!");
+
+            }
+        }
         private void initvalues() // reset start values
         {
             xstart = SX;
@@ -56,8 +77,26 @@ namespace ASE77146773
                 xstart = xende - (yende - ystart) * (double)xy;
 
         }
-       
+        private void colorRangeBox_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            initvalues();
+            xzoom = (xende - xstart) / (double)x1;
+            yzoom = (yende - ystart) / (double)y1;
+            mandelbrot();
+            this.Invalidate();
+    }
+
+        private void animateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            colorChange = true;
+            mandelbrot();
+            Refresh();
+        }
        
         private void Form1_Load_1(object sender, EventArgs e)
         {
@@ -65,7 +104,11 @@ namespace ASE77146773
             start();
         }
 
-       
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             //e.consume();
