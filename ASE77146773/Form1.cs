@@ -84,11 +84,13 @@ namespace ASE77146773
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             initvalues();
             xzoom = (xende - xstart) / (double)x1;
             yzoom = (yende - ystart) / (double)y1;
             mandelbrot();
             this.Invalidate();
+
     }
 
         private void animateToolStripMenuItem_Click(object sender, EventArgs e)
