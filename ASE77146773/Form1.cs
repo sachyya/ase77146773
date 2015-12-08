@@ -47,7 +47,6 @@ namespace ASE77146773
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Images|*.png;*.bmp;*.jpg";
             ImageFormat format = ImageFormat.Png;
@@ -67,7 +66,6 @@ namespace ASE77146773
                 MessageBox.Show("Image has been Saved!");
 
             }
-
         }
         private void initvalues() // reset start values
         {
@@ -86,22 +84,21 @@ namespace ASE77146773
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             initvalues();
             xzoom = (xende - xstart) / (double)x1;
             yzoom = (yende - ystart) / (double)y1;
             mandelbrot();
             this.Invalidate();
-
-    }
+        }
 
         private void animateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            colorDialog1.ShowDialog();
             colorChange = true;
             mandelbrot();
             Refresh();
         }
-       
+
         private void Form1_Load_1(object sender, EventArgs e)
         {
             init();
@@ -111,7 +108,10 @@ namespace ASE77146773
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
 
@@ -150,8 +150,9 @@ namespace ASE77146773
                 }
                 w = (xe - xs);
                 z = (ye - ys);
-                if ((w < 2) && (z < 2)) {
-                    initvalues(); 
+                if ((w < 2) && (z < 2))
+                {
+                    initvalues();
                 }
                 else
                 {
@@ -180,6 +181,7 @@ namespace ASE77146773
             {
                 this.Invalidate();
             }
+            mousePositionLabel.Text = "(" + Cursor.Position.X.ToString() + ", " + Cursor.Position.Y + " ) ";
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -277,11 +279,10 @@ namespace ASE77146773
                 {
                     return Color.FromArgb
                     (
-
                         (int)60,
                         (int)Math.Round(Math.Min(Math.Max(g, 0), 255)),
                         (int)Math.Round(Math.Min(Math.Max(b, 0), 255))
-                        );
+                     );
                 }
 
                 return Color.FromArgb
@@ -290,12 +291,12 @@ namespace ASE77146773
                         (int)Math.Round(Math.Min(Math.Max(r, 0), 255)),
                         (int)Math.Round(Math.Min(Math.Max(g, 0), 255)),
                         (int)Math.Round(Math.Min(Math.Max(b, 0), 255))
-                        );
+                     );
             }
 
         }
 
-        
+
 
         private float pointcolour(double xwert, double ywert) // color value from 0.0 to 1.0 by iterations
         {
@@ -325,7 +326,7 @@ namespace ASE77146773
             g1 = Graphics.FromImage(picture);
         }
 
-       
+
 
         public void start()
         {
